@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ashneet Kaur — Marketing Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f4ede1;
+    --ink: #1a1714;
+    --ink-soft: #4a4239;
+    --rust: #b04a26;
+    --paper: #faf6ee;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter Tight', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.4 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.15;
+    mix-blend-mode: multiply;
+  }
+
+  ::selection { background: var(--rust); color: var(--paper); }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    mix-blend-mode: multiply;
+  }
+
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+  }
+
+  .logo span { color: var(--rust); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .nav-links a {
+    color: var(--ink);
+    text-decoration: none;
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.3s;
+  }
+
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 0;
+    height: 1px;
+    background: var(--rust);
+    transition: width 0.4s ease;
+  }
+
+  .nav-links a:hover { color: var(--rust); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .hero {
+    min-height: 100vh;
+    padding: 140px 48px 80px;
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .hero-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-meta::before {
+    content: "";
+    width: 32px;
+    height: 1px;
+    background: var(--ink);
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(56px, 8vw, 120px);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    margin-bottom: 32px;
+  }
+
+  .hero h1 .italic {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--rust);
+  }
+
+  .hero-tagline {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    max-width: 480px;
+  }
+
+  .hero-right {
+    position: relative;
+    height: 100%;
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .stamp {
+    width: 200px;
+    height: 200px;
+    animation: rotate 40s linear infinite;
+    margin-bottom: 40px;
+  }
+
+  @keyframes rotate { to { transform: rotate(360deg); } }
+
+  .stamp text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    fill: var(--ink);
+    text-transform: uppercase;
+  }
+
+  .stamp-center {
+    font-family: 'Fraunces', serif !important;
+    font-style: italic;
+    font-size: 30px !important;
+    fill: var(--rust) !important;
+    letter-spacing: 0 !important;
+  }
+
+  .hero-card {
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    padding: 28px 32px;
+    width: 340px;
+    max-width: 100%;
+    box-shadow: 6px 6px 0 var(--ink);
+  }
+
+  .hero-card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--rust);
+    margin-bottom: 12px;
+  }
+
+  .hero-card-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(26, 23, 20, 0.15);
+    font-size: 14px;
+  }
+
+  .hero-card-row:last-child { border-bottom: none; }
+  .hero-card-row .key {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .hero-card-row .val {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+  }
+
+  .ticker {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 18px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+  }
+
+  .ticker-track {
+    display: flex;
+    gap: 48px;
+    white-space: nowrap;
+    animation: scroll 50s linear infinite;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 28px;
+  }
+
+  .ticker-track span { display: flex; align-items: center; gap: 48px; }
+  .ticker-track .dot {
+    width: 8px; height: 8px;
+    background: var(--rust);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  @keyframes scroll {
+    to { transform: translateX(-50%); }
+  }
+
+  .section {
+    padding: 120px 48px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--rust);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-num::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--ink);
+    opacity: 0.2;
+    max-width: 200px;
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(44px, 6vw, 80px);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    margin-bottom: 60px;
+    max-width: 900px;
+  }
+
+  .section-title em {
+    color: var(--rust);
+    font-weight: 300;
+  }
+
+  .about {
+    background: var(--paper);
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-portrait {
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, var(--rust) 0%, #8a3a1f 100%);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--ink);
+  }
+
+  .about-portrait::after {
+    content: "AK";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 200px;
+    font-weight: 300;
+    color: var(--cream);
+    letter-spacing: -0.05em;
+  }
+
+  .about-portrait::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+    z-index: 1;
+  }
+
+  .portrait-tag {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--cream);
+    z-index: 2;
+    background: rgba(26, 23, 20, 0.6);
+    padding: 8px 14px;
+    backdrop-filter: blur(4px);
+  }
+
+  .about-body p {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    line-height: 1.55;
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+
+  .about-body p:first-child::first-letter {
+    font-size: 78px;
+    float: left;
+    line-height: 0.9;
+    padding: 8px 14px 0 0;
+    font-weight: 500;
+    color: var(--rust);
+  }
+
+  .about-stats {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    border-top: 1px solid var(--ink);
+    padding-top: 32px;
+  }
+
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  .stat-num em { color: var(--rust); font-style: italic; font-weight: 300; }
+
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-soft);
+    margin-top: 8px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border: 1px solid var(--ink);
+  }
+
+  .service {
+    padding: 48px;
+    border-right: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    background: var(--paper);
+    position: relative;
+    transition: background 0.4s, color 0.4s;
+  }
+
+  .service:nth-child(2n) { border-right: none; }
+  .service:nth-last-child(-n+2) { border-bottom: none; }
+
+  .service:hover { background: var(--ink); color: var(--cream); }
+  .service:hover .service-num { color: var(--rust); }
+  .service:hover h3 .italic { color: var(--rust); }
+
+  .service-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--rust);
+    margin-bottom: 24px;
+    transition: color 0.4s;
+  }
+
+  .service h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .service h3 .italic { font-style: italic; color: var(--rust); }
+
+  .service p {
+    font-size: 15px;
+    line-height: 1.65;
+    opacity: 0.85;
+  }
+
+  .service-tags {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .service-tags span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    border: 1px solid currentColor;
+    opacity: 0.7;
+  }
+
+  .work {
+    background: var(--paper);
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .role {
+    display: grid;
+    grid-template-columns: 140px 1fr auto;
+    gap: 48px;
+    padding: 36px 0;
+    border-top: 1px solid var(--ink);
+    align-items: baseline;
+    transition: padding 0.4s, background 0.4s;
+    position: relative;
+  }
+
+  .role:last-child { border-bottom: 1px solid var(--ink); }
+
+  .role:hover {
+    padding-left: 24px;
+    padding-right: 24px;
+    background: var(--cream);
+  }
+
+  .role:hover .role-arrow { transform: translateX(8px); color: var(--rust); }
+
+  .role-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+  }
+
+  .role-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 34px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .role-title em {
+    color: var(--rust);
+    font-weight: 300;
+  }
+
+  .role-company {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-top: 8px;
+    letter-spacing: 0.02em;
+  }
+
+  .role-arrow {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    transition: transform 0.4s, color 0.4s;
+    color: var(--ink-soft);
+  }
+
+  .education-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .edu-card {
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    padding: 36px;
+  }
+
+  .edu-degree {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .edu-degree em { color: var(--rust); font-style: italic; font-weight: 300; }
+
+  .edu-school {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+  }
+
+  .edu-detail {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  .contact {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 120px 48px 60px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .contact-headline {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(56px, 9vw, 140px);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    margin-bottom: 60px;
+  }
+
+  .contact-headline em {
+    color: var(--rust);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    padding-top: 48px;
+    border-top: 1px solid rgba(244, 237, 225, 0.2);
+  }
+
+  .contact-block h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--rust);
+    margin-bottom: 20px;
+  }
+
+  .contact-block a {
+    font-family: 'Fraunces', serif;
+    font-size: 30px;
+    color: var(--cream);
+    text-decoration: none;
+    display: block;
+    line-height: 1.3;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.4s, padding-left 0.4s;
+    width: fit-content;
+  }
+
+  .contact-block a:hover {
+    border-bottom-color: var(--rust);
+    padding-left: 8px;
+  }
+
+  .contact-block p {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    line-height: 1.5;
+    color: rgba(244, 237, 225, 0.85);
+  }
+
+  .contact-list a + a { margin-top: 8px; }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(244, 237, 225, 0.2);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(244, 237, 225, 0.6);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    .nav-links { gap: 18px; font-size: 10px; }
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 120px 24px 60px;
+      gap: 40px;
+    }
+    .hero-right { min-height: auto; align-items: flex-start; }
+    .section { padding: 80px 24px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-portrait::after { font-size: 120px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .service { border-right: none !important; padding: 36px; }
+    .service:last-child { border-bottom: none; }
+    .role {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 28px 0;
+    }
+    .role:hover { padding-left: 12px; padding-right: 12px; }
+    .role-arrow { display: none; }
+    .education-grid { grid-template-columns: 1fr; }
+    .contact { padding: 80px 24px 40px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .footer { flex-direction: column; gap: 12px; }
+    .stamp { width: 150px; height: 150px; }
+    .about-stats { grid-template-columns: 1fr; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Ashneet<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left reveal">
+    <div class="hero-meta">Portfolio · Vancouver, BC</div>
+    <h1>
+      Marketing<br>
+      built around<br>
+      <span class="italic">people.</span>
+    </h1>
+    <p class="hero-tagline">
+      Ashneet Kaur. Creative marketer with six years of experience in storytelling, community engagement, and audience focused content.
+    </p>
+  </div>
+
+  <div class="hero-right reveal">
+    <svg class="stamp" viewBox="0 0 200 200">
+      <defs>
+        <path id="circlePath" d="M 100, 100 m -80, 0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" />
+      </defs>
+      <circle cx="100" cy="100" r="95" fill="none" stroke="#1a1714" stroke-width="1"/>
+      <circle cx="100" cy="100" r="62" fill="none" stroke="#1a1714" stroke-width="1"/>
+      <text>
+        <textPath href="#circlePath" startOffset="0">
+          ★ Open to freelance ★ Open to full time ★ Open to freelance ★ Open to full time
+        </textPath>
+      </text>
+      <text x="100" y="95" text-anchor="middle" class="stamp-center">creative</text>
+      <text x="100" y="120" text-anchor="middle" class="stamp-center">marketer</text>
+    </svg>
+
+    <div class="hero-card">
+      <div class="hero-card-label">At a glance</div>
+      <div class="hero-card-row"><span class="key">Based in</span><span class="val">Vancouver, BC</span></div>
+      <div class="hero-card-row"><span class="key">Focus</span><span class="val">Brand &amp; social</span></div>
+      <div class="hero-card-row"><span class="key">Experience</span><span class="val">6+ years</span></div>
+      <div class="hero-card-row"><span class="key">Education</span><span class="val">BBA, Capilano</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Storytelling <span class="dot"></span></span>
+    <span>Community Engagement <span class="dot"></span></span>
+    <span>Brand Strategy <span class="dot"></span></span>
+    <span>Social Media <span class="dot"></span></span>
+    <span>Content Creation <span class="dot"></span></span>
+    <span>Campaign Strategy <span class="dot"></span></span>
+    <span>Storytelling <span class="dot"></span></span>
+    <span>Community Engagement <span class="dot"></span></span>
+    <span>Brand Strategy <span class="dot"></span></span>
+    <span>Social Media <span class="dot"></span></span>
+    <span>Content Creation <span class="dot"></span></span>
+    <span>Campaign Strategy <span class="dot"></span></span>
+  </div>
+</div>
+
+<section class="section about" id="about">
+  <div class="section-num reveal">001 / About</div>
+  <h2 class="section-title reveal">About <em>Ashneet</em>.</h2>
+
+  <div class="about-grid">
+    <div class="about-portrait reveal">
+      <span class="portrait-tag">Vancouver</span>
+    </div>
+
+    <div class="about-body reveal">
+      <p>
+        I am a fourth year BBA candidate at Capilano University, concentrating in Marketing and Business Information Systems. Originally from India, now based in Vancouver, I have spent the last six years working at the intersection of brand, content, and customer experience.
+      </p>
+      <p>
+        My background spans social media management, community outreach, event programming, and visual content creation. At Zen Maker Lab I led social campaigns and grew the client base through proactive engagement. At the Capilano Students' Union I coordinated communications and outreach across a wide student community. Today I work as a Sales Specialist at Apple, where client relations and brand standards are part of every shift.
+      </p>
+      <p>
+        I work best in collaborative, fast moving teams where ideas can be tested quickly and where the work has a clear audience in mind.
+      </p>
+
+      <div class="about-stats">
+        <div>
+          <div class="stat-num"><em>6+</em></div>
+          <div class="stat-label">Years in sales &amp; marketing</div>
+        </div>
+        <div>
+          <div class="stat-num"><em>500+</em></div>
+          <div class="stat-label">Professional network</div>
+        </div>
+        <div>
+          <div class="stat-num"><em>4</em></div>
+          <div class="stat-label">Brand roles</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="section-num reveal">002 / Services</div>
+  <h2 class="section-title reveal">What I work on.</h2>
+
+  <div class="services-grid reveal">
+    <div class="service">
+      <div class="service-num">/ 01</div>
+      <h3>Social Media <span class="italic">Marketing</span></h3>
+      <p>Channel management across Instagram, TikTok, and LinkedIn. Includes content calendars, copywriting, scheduling, community replies, and reporting on what is working.</p>
+      <div class="service-tags">
+        <span>Instagram</span><span>TikTok</span><span>LinkedIn</span><span>Analytics</span>
+      </div>
+    </div>
+
+    <div class="service">
+      <div class="service-num">/ 02</div>
+      <h3>Content <span class="italic">Strategy</span></h3>
+      <p>Editorial planning, hook development, and visual systems built around a defined audience. Covers UGC creation, short form video scripting, and SEO informed copy.</p>
+      <div class="service-tags">
+        <span>Editorial</span><span>UGC</span><span>SEO</span><span>Copywriting</span>
+      </div>
+    </div>
+
+    <div class="service">
+      <div class="service-num">/ 03</div>
+      <h3>Community <span class="italic">Engagement</span></h3>
+      <p>Outreach programs, partnerships, and on the ground events. Drawn from years of student union and retail work, focused on turning followers into active community members.</p>
+      <div class="service-tags">
+        <span>Events</span><span>Outreach</span><span>Partnerships</span><span>CRM</span>
+      </div>
+    </div>
+
+    <div class="service">
+      <div class="service-num">/ 04</div>
+      <h3>Brand &amp; <span class="italic">Visuals</span></h3>
+      <p>Visual asset design, presentation decks, and brand positioning. Helps small teams and businesses present a consistent identity across every channel they use.</p>
+      <div class="service-tags">
+        <span>Identity</span><span>Decks</span><span>Ad Creative</span><span>Positioning</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section work" id="work">
+  <div class="section-num reveal">003 / Experience</div>
+  <h2 class="section-title reveal">Selected <em>experience</em>.</h2>
+
+  <div class="timeline">
+    <div class="role reveal">
+      <div class="role-year">2025 / Now</div>
+      <div>
+        <div class="role-title">Sales <em>Specialist</em></div>
+        <div class="role-company">Apple, Burnaby BC. Client relations and visual standards.</div>
+      </div>
+      <div class="role-arrow">→</div>
+    </div>
+
+    <div class="role reveal">
+      <div class="role-year">2024 / 2025</div>
+      <div>
+        <div class="role-title">Communications <em>Coordinator</em></div>
+        <div class="role-company">Capilano Students' Union. Media planning, strategic communications, brand voice.</div>
+      </div>
+      <div class="role-arrow">→</div>
+    </div>
+
+    <div class="role reveal">
+      <div class="role-year">2024 / Now</div>
+      <div>
+        <div class="role-title">UGC <em>Creator</em></div>
+        <div class="role-company">Freelance. Brand storytelling, short form content, partnerships.</div>
+      </div>
+      <div class="role-arrow">→</div>
+    </div>
+
+    <div class="role reveal">
+      <div class="role-year">2024 / 2025</div>
+      <div>
+        <div class="role-title">Outreach <em>Assistant</em></div>
+        <div class="role-company">Capilano Students' Union. Community programming and student engagement.</div>
+      </div>
+      <div class="role-arrow">→</div>
+    </div>
+
+    <div class="role reveal">
+      <div class="role-year">2021 / 2025</div>
+      <div>
+        <div class="role-title">Brand <em>Ambassador</em></div>
+        <div class="role-company">American Eagle Outfitters. Visual standards and consumer marketing.</div>
+      </div>
+      <div class="role-arrow">→</div>
+    </div>
+
+    <div class="role reveal">
+      <div class="role-year">2023</div>
+      <div>
+        <div class="role-title">Client Relations <em>Coordinator</em></div>
+        <div class="role-company">Zen Maker Lab. Social campaigns, events, HubSpot CRM.</div>
+      </div>
+      <div class="role-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="education">
+  <div class="section-num reveal">004 / Education</div>
+  <h2 class="section-title reveal">Education.</h2>
+
+  <div class="education-grid reveal">
+    <div class="edu-card">
+      <div class="edu-degree">Bachelor of <em>Business Administration</em></div>
+      <div class="edu-school">Capilano University · 2021 to 2024</div>
+      <p class="edu-detail">Concentration in Management Information Systems and Marketing. Grade A. Peer educator for Quantitative Methods and Managerial Accounting. Outreach Assistant for the Students' Union.</p>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">BBA <em>Coursework</em></div>
+      <div class="edu-school">Beedie School of Business, SFU · 2020 to 2021</div>
+      <p class="edu-detail">Foundational business coursework including Essentials of Business Communication, Calculus for Social Sciences, and Critical Thinking.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2 class="contact-headline reveal">
+    Let's<br>
+    <em>work together.</em>
+  </h2>
+
+  <div class="contact-grid">
+    <div class="contact-block reveal">
+      <h4>Get in touch</h4>
+      <div class="contact-list">
+        <a href="mailto:hello@ashneetkaur.com">hello@ashneetkaur.com →</a>
+        <a href="https://linkedin.com/" target="_blank" rel="noopener">LinkedIn / Ashneet Kaur →</a>
+      </div>
+    </div>
+    <div class="contact-block reveal">
+      <h4>Currently</h4>
+      <p>Open to freelance creative projects, brand collaborations, and full time marketing roles in Greater Vancouver and remote.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>© 2026 Ashneet Kaur. Vancouver, BC.</div>
+    <div>BBA · Capilano University</div>
+  </div>
+</section>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), i * 60);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
